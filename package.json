@@ -1,0 +1,43 @@
+{
+  "name": "un-women",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turay15818/un-women.git"
+  },
+  "keywords": [
+    "users",
+    "vendor",
+    "admin",
+    "mentor",
+    "customers",
+    "product",
+    "business-registration"
+  ],
+  "author": "Musa Turay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/turay15818/un-women/issues"
+  },
+  "homepage": "https://github.com/turay15818/un-women#readme",
+  "dependencies": {
+    "argon2": "^0.31.0",
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.8",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.4",
+    "sequelize": "^6.19.1"
+  }
+}
