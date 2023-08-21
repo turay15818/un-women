@@ -21,7 +21,6 @@ export const createNewsLetter = async (req, res) => {
   const {
     email
   } = req.body;
-  const CreatedBy = req.user.name;
   try {
     await NewsLetter.create({
       email: email,
