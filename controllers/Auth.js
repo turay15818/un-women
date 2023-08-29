@@ -109,7 +109,7 @@ export const Me = async (req, res) => {
     return res.status(200).json({ msg: "Please login to your account!" });
   }
   const user = await User.findOne({
-    attributes: ["id", "staffId", "name", "email", "phoneNumber", "role"],
+    attributes: ["id", "url", "name", "email", "phoneNo", "homeAddress", "role"],
     where: {
       id: req.session.userId,
     },

@@ -34,7 +34,7 @@ export const superAdminOnly = async (req, res, next) => {
     },
   });
   if (!user) return res.status(404).json({ msg: "User not found" });
-  if (user.role !== "SAdmin")
+  if (user.role !== "SuperAdmin")
     return res.status(403).json({ msg: "Access forbidden" });
   next();
 };

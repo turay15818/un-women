@@ -14,7 +14,7 @@ import BusinessProfileRoute from "./routes/BusinessProfileRoute.js";
 import MentorProfileRoute from "./routes/MentorProfileRoute.js";
 import { __dirname } from "./dirname.js";
 import NewsLetter from "./models/NewsLetterModel.js";
-import NewsLetterRoute from "./routes/NewsLetterRoute.js"
+import NewsLetterRoute from "./routes/NewsLetterRoute.js";
 dotenv.config();
 
 const app = express();
@@ -25,9 +25,9 @@ const store = new sessionStore({
   db: db,
 });
 
-(async()=>{
-    await db.sync();
-})();
+// (async () => {
+//   await db.sync();
+// })();
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
@@ -47,7 +47,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "http://localhost:4200",
   })
 );
 app.use(express.json());
@@ -60,7 +60,7 @@ app.use(AuthRoute);
 app.use(NewsLetterRoute);
 
 // store.sync();
-
-app.listen(process.env.APP_PORT, () => {
-  console.log(`Server up and running...${process.env.APP_PORT}`);
+const port = process.env.APP_PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server up and running...${port}`);
 });
