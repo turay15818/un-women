@@ -49,7 +49,7 @@ export const createUser = async (req, res) => {
       return res.status(400).json({ msg: "No File Uploaded" });
     const { name, email, password, role, phoneNo, homeAddress, confPassword } =
       req.body;
-    const CreatedBy = req.user.name;
+    // const CreatedBy = req.user.name;
     if (password !== confPassword)
       return res.status(400).json({ msg: "Passwords do not match" });
 
@@ -79,7 +79,7 @@ export const createUser = async (req, res) => {
           phoneNo: phoneNo,
           role: role,
           url: url,
-          CreatedBy: CreatedBy,
+          CreatedBy: name,
         });
         res.status(201).json({ msg: "User created successfully" });
       } catch (error) {
