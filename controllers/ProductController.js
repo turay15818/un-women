@@ -4,12 +4,13 @@ import ProductImage from "../models/ProductImageModel.js";
 import NewsLetter from "../models/NewsLetterModel.js";
 import { sendEmail } from "../config/SendMailConfig.js";
 import path from "path";
-import handlebars from "handlebars"
-import fs from 'fs';
+import handlebars from "handlebars";
+import fs from "fs";
+import { Op } from "sequelize";
 
 export const getProducts = async (req, res) => {
   try {
-    const response = await Product.findAll({
+    const response = await Products.findAll({
       where: {
         Active: true,
         Deleted: false,
@@ -18,6 +19,50 @@ export const getProducts = async (req, res) => {
         model: ProductImage,
       },
     });
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
+export const getProductsbyRole = async (req, res) => {
+  try {
+    const response = await Products.findAll({
+      where: {
+        userId: req.userId,
+        Active: true,
+        Deleted: false,
+      },
+      include: {
+        model: ProductImage,
+      },
+    });
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
+export const getProductRoleAndById = async (req, res) => {
+  try {
+    const response = await Products.findOne({
+      where: {
+        [Op.and]: [{ uuid: req.params.id }, { userId: req.userId }],
+        // uuid: req.params.id,
+        Active: true,
+        Deleted: false,
+      },
+
+      include: {
+        model: ProductImage,
+      },
+    });
+
+    if (!response) {
+      return res.status(404).json({ msg: "Business Profile not found" });
+    }
 
     res.status(200).json(response);
   } catch (error) {
@@ -69,8 +114,8 @@ export const createProduct = async (req, res) => {
       userId: req.userId,
       CreatedBy: CreatedBy,
     });
-    const templatePath = './Utils/productEmailTemplate.html';
-    const productEmailTemplate = fs.readFileSync(templatePath, 'utf-8');
+    const templatePath = "./Utils/productEmailTemplate.html";
+    const productEmailTemplate = fs.readFileSync(templatePath, "utf-8");
     const template = handlebars.compile(productEmailTemplate);
     const emailData = {
       productName: productName,
@@ -79,11 +124,11 @@ export const createProduct = async (req, res) => {
     };
     const emailBody = template(emailData);
     const subscribers = await NewsLetter.findAll({
-      attributes: ['email'],
+      attributes: ["email"],
     });
     subscribers.forEach(async (subscriber) => {
-      const subject = 'New Product Announcement';
-      
+      const subject = "New Product Announcement";
+
       await sendEmail(subscriber.email, subject, emailBody);
     });
     res.status(201).json({ msg: "Product Created Successfuly" });
@@ -242,8 +287,8 @@ export const createProductAndImages = async (req, res) => {
       ProductId: product.id,
     });
 
-    const templatePath = './Utils/productEmailTemplate.html';
-    const productEmailTemplate = fs.readFileSync(templatePath, 'utf-8');
+    const templatePath = "./Utils/productEmailTemplate.html";
+    const productEmailTemplate = fs.readFileSync(templatePath, "utf-8");
     const template = handlebars.compile(productEmailTemplate);
     const emailData = {
       productName: productName,
@@ -252,14 +297,13 @@ export const createProductAndImages = async (req, res) => {
     };
     const emailBody = template(emailData);
     const subscribers = await NewsLetter.findAll({
-      attributes: ['email'],
+      attributes: ["email"],
     });
     subscribers.forEach(async (subscriber) => {
-      const subject = 'New Product Announcement';
-      
+      const subject = "New Product Announcement";
+
       await sendEmail(subscriber.email, subject, emailBody);
     });
-
 
     res.status(201).json({ msg: "Product and Images created successfully" });
   } catch (error) {

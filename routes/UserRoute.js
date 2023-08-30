@@ -6,14 +6,14 @@ import {
   updateUser,
   deleteUser,
 } from "../controllers/Users.js";
-import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
+import { verifyUser, adminOnly, vendorOnly } from "../middleware/AuthUser.js";
 
 const router = express.Router();
 
-router.get("/users", getUsers);
-// router.get('/users', verifyUser, adminOnly, getUsers);
+// router.get("/users", getUsers);
+router.get("/users", verifyUser, vendorOnly, getUsers);
 router.get("/users/:id", verifyUser, adminOnly, getUserById);
-router.post("/users", verifyUser, adminOnly, createUser);
+router.post("/users", createUser);
 router.patch("/update-users/:id", verifyUser, adminOnly, updateUser);
 router.patch("/delete-users/:id", verifyUser, adminOnly, deleteUser);
 

@@ -6,29 +6,29 @@ import {
   updateBusinessProfile,
   deleteBusinessProfile,
 } from "../controllers/BusinessProfileController.js";
-import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
+import { verifyUser, vendorOnly } from "../middleware/AuthUser.js";
 
 const router = express.Router();
 
-router.get("/businessProfile", verifyUser, adminOnly, getBusinessProfile);
+router.get("/businessProfile", verifyUser, vendorOnly, getBusinessProfile);
 // router.get('/users', verifyUser, adminOnly, getBusinessProfile);
 router.get(
   "/businessProfile/:id",
   verifyUser,
-  adminOnly,
+  vendorOnly,
   getBusinessProfileById
 );
-router.post("/businessProfile", verifyUser, adminOnly, createBusinessProfile);
+router.post("/businessProfile", verifyUser, vendorOnly, createBusinessProfile);
 router.patch(
   "/businessProfile/:id",
   verifyUser,
-  adminOnly,
+  vendorOnly,
   updateBusinessProfile
 );
 router.patch(
   "/delete-business-profile/:id",
   verifyUser,
-  adminOnly,
+  vendorOnly,
   deleteBusinessProfile
 );
 

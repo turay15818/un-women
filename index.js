@@ -14,23 +14,39 @@ import BusinessProfileRoute from "./routes/BusinessProfileRoute.js";
 import MentorProfileRoute from "./routes/MentorProfileRoute.js";
 import { __dirname } from "./dirname.js";
 import NewsLetter from "./models/NewsLetterModel.js";
-import NewsLetterRoute from "./routes/NewsLetterRoute.js"
-dotenv.config();
+import NewsLetterRoute from "./routes/NewsLetterRoute.js";
+import { logRequest } from "./controllers/LogsController.js";
+import bodyParser from "body-parser";
+import interceptor from 'express-interceptor'; 
 
+
+
+dotenv.config();
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const responseInterceptor = interceptor((req, res) => ({
+  isInterceptable: () => res.get("Content-Type") === "application/json",
+  intercept: (body, send) => {
+    res.locals.responseBody = body;
+    send(body);
+  },
+}));
 
 const sessionStore = SequelizeStore(session.Store);
-
 const store = new sessionStore({
   db: db,
 });
 
-(async()=>{
-    await db.sync();
-})();
+// (async () => {
+//   await db.sync();
+// })();
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
-
+app.use(responseInterceptor);
+app.use(logRequest);
 app.use(fileUpload());
 app.use(
   session({
@@ -47,7 +63,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "http://localhost:4200",
   })
 );
 app.use(express.json());
@@ -60,7 +76,7 @@ app.use(AuthRoute);
 app.use(NewsLetterRoute);
 
 // store.sync();
-
-app.listen(process.env.APP_PORT, () => {
-  console.log(`Server up and running...${process.env.APP_PORT}`);
+const port = process.env.APP_PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server up and running...${port}`);
 });
