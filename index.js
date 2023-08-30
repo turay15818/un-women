@@ -15,12 +15,27 @@ import MentorProfileRoute from "./routes/MentorProfileRoute.js";
 import { __dirname } from "./dirname.js";
 import NewsLetter from "./models/NewsLetterModel.js";
 import NewsLetterRoute from "./routes/NewsLetterRoute.js";
-dotenv.config();
+import { logRequest } from "./controllers/LogsController.js";
+import bodyParser from "body-parser";
+import interceptor from 'express-interceptor'; 
 
+
+
+dotenv.config();
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const responseInterceptor = interceptor((req, res) => ({
+  isInterceptable: () => res.get("Content-Type") === "application/json",
+  intercept: (body, send) => {
+    res.locals.responseBody = body;
+    send(body);
+  },
+}));
 
 const sessionStore = SequelizeStore(session.Store);
-
 const store = new sessionStore({
   db: db,
 });
@@ -30,7 +45,8 @@ const store = new sessionStore({
 // })();
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
-
+app.use(responseInterceptor);
+app.use(logRequest);
 app.use(fileUpload());
 app.use(
   session({
