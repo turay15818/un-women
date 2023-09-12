@@ -1,0 +1,13 @@
+/* CSS to set background image and maintain aspect ratio */
+.bg-image {
+  background-image: url("../../../../assets//images/loginpage.png"); /* Replace with your image URL */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+  background-position: center center;
+  min-height: 100vh; /* Minimum height to cover the entire viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

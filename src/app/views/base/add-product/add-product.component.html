@@ -1,0 +1,187 @@
+<div *ngIf="showSuccessMessage" class="success-message">
+  Product created successfully!
+</div>
+
+<div class="mx-5">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="my-5">
+    <div class="form-group">
+      <label for="productName"
+        >Product Name <span style="color: red">**</span>
+      </label>
+      <input
+        type="text"
+        id="productName"
+        formControlName="productName"
+        required
+        formControlName="productName"
+        class="form-control form-control-lg shadow-lg"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="discription">Discription</label>
+      <textarea
+        id="discription"
+        name="discription"
+        formControlName="discription"
+        class="form-control form-control-lg shadow-lg"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input
+        type="text"
+        id="category"
+        formControlName="category"
+        required
+        class="form-control form-control-lg shadow-lg"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <input
+        type="number"
+        id="rating"
+        name="rating"
+        formControlName="rating"
+        class="form-control form-control-lg shadow-lg"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="previousPrice">Previous Price</label>
+      <input
+        type="number"
+        id="previousPrice"
+        name="previousPrice"
+        formControlName="previousPrice"
+        class="form-control form-control-lg shadow-lg"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="currentPrice">Current Price</label>
+      <input
+        type="number"
+        id="currentPrice"
+        name="currentPrice"
+        formControlName="currentPrice"
+        class="form-control form-control-lg shadow-lg"
+      />
+    </div>
+
+    <div class="col-md-12">
+      <!-- Adjusted to col-md-8 -->
+
+      <div class="form-group">
+        <label for="productImageOne" class="pl-2">Product Image</label>
+        <div class="col-md-12 mb-4 pb-2">
+          <div class="form-outline">
+            <input
+              type="file"
+              id="productImageOne"
+              (change)="onFileSelected($event, 'productImageOne')"
+              accept="image/*"
+              accept=".jpg, .jpeg, .png, ico, gif, svg"
+              required
+              class="form-control form-control-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="productImageTwo" class="pl-2">Product Image</label>
+        <div class="col-md-12 mb-4 pb-2">
+          <div class="form-outline">
+            <input
+              type="file"
+              id="productImageTwo"
+              (change)="onFileSelected($event, 'productImageTwo')"
+              accept="image/*"
+              accept=".jpg, .jpeg, .png, ico, gif, svg"
+              required
+              class="form-control form-control-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="productImageThree" class="pl-2">Product Image</label>
+        <div class="col-md-12 mb-4 pb-2">
+          <div class="form-outline">
+            <input
+              type="file"
+              id="productImageThree"
+              (change)="onFileSelected($event, 'productImageThree')"
+              accept="image/*"
+              accept=".jpg, .jpeg, .png, ico, gif, svg"
+              required
+              class="form-control form-control-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="productImageFour" class="pl-2">Product Image</label>
+        <div class="col-md-12 mb-4 pb-2">
+          <div class="form-outline">
+            <input
+              type="file"
+              id="productImageFour"
+              (change)="onFileSelected($event, 'productImageFour')"
+              accept="image/*"
+              accept=".jpg, .jpeg, .png, ico, gif, svg"
+              required
+              class="form-control form-control-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="productImageFive" class="pl-2">Product Image</label>
+        <div class="col-md-12 mb-4 pb-2">
+          <div class="form-outline">
+            <input
+              type="file"
+              id="productImageFive"
+              (change)="onFileSelected($event, 'productImageFive')"
+              accept="image/*"
+              accept=".jpg, .jpeg, .png, ico, gif, svg"
+              required
+              class="form-control form-control-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="productImageSix" class="pl-2">Image</label>
+
+        <div class="col-md-12 mb-4 pb-2">
+          <div class="form-outline">
+            <input
+              type="file"
+              id="productImageSix"
+              (change)="onFileSelected($event, 'productImageSix')"
+              accept="image/*"
+              accept=".jpg, .jpeg, .png, ico, gif, svg"
+              required
+              class="form-control form-control-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 pt-2">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary btn-lg" type="submit">
+            Create Business Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

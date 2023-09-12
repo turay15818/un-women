@@ -1,0 +1,9 @@
+/* Define a custom xxl breakpoint */
+@media (min-width: 1400px) {
+    .custom-col-xxl-16 {
+      flex: 0 0 calc(100% / 12 * 17);
+      max-width: calc(100% / 12 * 17);
+      width: 100%;
+    }
+  }
+  
