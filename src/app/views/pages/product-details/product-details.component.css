@@ -7,6 +7,12 @@
     }
   }
   
+  .font-roboto {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
+  
+
   /******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)

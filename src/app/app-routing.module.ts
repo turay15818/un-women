@@ -12,6 +12,18 @@ import { AboutComponent } from './views/pages/about/about.component';
 import { BlogComponent } from './views/pages/blog/blog.component';
 import { ProductDetailsComponent } from './views/pages/product-details/product-details.component';
 import { AuthGuard } from '../Service/auth.guard';
+import { UsersComponent } from './views/base/users/users.component';
+import { UserByIdComponent } from './views/base/user-by-id/user-by-id.component';
+import { ProductcategoriesComponent } from './views/pages/productcategories/productcategories.component';
+import { BusinesscategoriesComponent } from './views/pages/businesscategories/businesscategories.component';
+import { IndividualProductsComponent } from './views/pages/individual-products/individual-products.component';
+import { BusinessProfileDetailsComponent } from './views/pages/business-profile-details/business-profile-details.component';
+import { ForgetPasswordComponent } from './views/pages/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './views/pages/reset-password/reset-password.component';
+import { FooterComponent } from './views/pages/footer/footer.component';
+import { MentorsComponent } from './views/pages/mentors/mentors.component';
+import { MentorDetailsComponent } from './views/pages/mentor-details/mentor-details.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -39,13 +51,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () =>
           import('./views/base/base.module').then((m) => m.BaseModule),
-      },
-
-      {
-        path: 'charts',
-        canActivate: [AuthGuard],
-        loadChildren: () =>
-          import('./views/charts/charts.module').then((m) => m.ChartsModule),
       },
 
       {
@@ -85,6 +90,20 @@ const routes: Routes = [
     },
   },
   {
+    path: 'forget-passsword',
+    component: ForgetPasswordComponent,
+    data: {
+      title: 'Forget Password Page',
+    },
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    data: {
+      title: 'Reset Password Page',
+    },
+  },
+  {
     path: 'home',
     component: HomepageComponent,
     data: {
@@ -94,10 +113,12 @@ const routes: Routes = [
   {
     path: 'navbar',
     component: NavbarComponent,
-    data: {
-      title: 'Home Page',
-    },
   },
+  {
+    path: 'footer',
+    component: FooterComponent,
+  },
+
   {
     path: 'about',
     component: AboutComponent,
@@ -127,10 +148,64 @@ const routes: Routes = [
     },
   },
   {
+    path: 'product-categories/:category',
+    component: ProductcategoriesComponent,
+    data: {
+      title: 'Product Details Page',
+    },
+  },
+
+  {
+    path: 'business-categories/:businessCategory',
+    component: BusinesscategoriesComponent,
+    data: {
+      title: 'Business Category page',
+    },
+  },
+  {
+    path: 'usersProduct/:userId',
+    component: IndividualProductsComponent,
+    data: {
+      title: '',
+    },
+  },
+
+  {
+    path: 'businessProfile-details/:uuid',
+    component: BusinessProfileDetailsComponent,
+    data: {
+      title: '',
+    },
+  },
+
+  {
     path: 'register',
     component: RegisterComponent,
     data: {
       title: 'Register Page',
+    },
+  },
+
+  {
+    path: 'mentors',
+    component: MentorsComponent,
+  },
+  {
+    path: 'mentors-details/:uuid',
+    component: MentorDetailsComponent,
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: {
+      title: 'Users Page',
+    },
+  },
+  {
+    path: 'user-by-id/:id',
+    component: UserByIdComponent,
+    data: {
+      title: 'User By ID',
     },
   },
   { path: '**', redirectTo: 'home' },

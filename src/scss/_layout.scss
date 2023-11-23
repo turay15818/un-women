@@ -5,3 +5,11 @@
   will-change: auto;
   @include transition(padding .15s);
 }
+body,
+.navbar,
+.btn,
+.form-control,
+.table,
+.alert {
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,0 +1,64 @@
+<!-- important 
+style="height: 140px;"
+col-lg-2 col-md-3 col-sm-4 pb-1 -->
+
+<div class="animate__animated animate__fadeInUp font-roboto">
+    <div class="card mb-1">
+        <div class="card-body animate__animated animate__fadeIn p-3">
+            <div class="mt-2">
+                <div>
+                    <div id="tableExample" class="">
+                        <div class="table-responsive scrollbar">
+                            <table class="table table-bordered table-striped fs--1 mb-0 hover rounded shadow-lg"
+                                id="user-product">
+                                <thead class="bg-500 text-900 shadow-lg">
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Current Price</th>
+                                        <th scope="col">Previous Price</th>
+                                        <th scope="col">Date Created</th>
+                                        <th scope="col">Modify</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of recentProduct">
+                                        <td scope="col">{{ product.id }}</td>
+                                        <td scope="col">{{ product.productName }}</td>
+                                        <td scope="col">{{"SLE "}} {{ product.currentPrice }}
+                                        <td scope="col">{{"SLE "}}{{ product.previousPrice }}</td>
+                                        <td scope="col">{{ formatDateTime(product.DateCreated) }}</td>
+                                        <td scope="col">
+                                            <div class="d-grid gap-6 d-md-flex justify-content-md-center">
+                                                <button style="
+                                  align-items: center;
+                                  padding-left: 10px;
+                                  padding-right: 10px;
+                                  font-weight: 900;
+                                  font-size: 12px;
+                                " cButton color="info" shape="rounded-pill" class="sticky-lg-bottom center">
+                                                    <i class="fa-sharp fa-solid fa-pen-to-square fa-beat-fade fa-1x"
+                                                        style="color: #ffffff"></i>
+                                                    <a class="text-decoration-none"
+                                                        [routerLink]="['/base/my-product-details', product.uuid]"
+                                                        href="">
+                                                        <div class="product-action">
+                                                            <a class="text-decoration-none"
+                                                                class="btn btn-outline-dark ">
+                                                            </a>
+                                                        </div>
+                                                    </a>
+                                                    See Product Details
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

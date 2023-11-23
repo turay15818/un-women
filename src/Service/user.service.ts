@@ -14,7 +14,6 @@ export class UserService {
 
   setUser(data: any) {
     localStorage.setItem(this.userDataKey, JSON.stringify(data));
-    console.log('User data set:', data);
   }
 
   getUser() {
@@ -38,7 +37,6 @@ export class UserService {
 
     return this.http.get(`${apiUrl}me`, { headers }).pipe(
       tap((response) => {
-        console.log('User Data from API:', response);
       }),
       catchError((error) => {
         console.error('Error fetching user data:', error);
@@ -60,7 +58,7 @@ export class UserService {
 
     return this.http.get(`${apiUrl}businessProfileByUser`, { headers }).pipe(
       tap((response) => {
-        console.log('User Data from API:', response);
+  
       }),
       catchError((error) => {
         console.error('Error fetching user data:', error);

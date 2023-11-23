@@ -1,0 +1,146 @@
+<app-navbar> </app-navbar>
+
+<div class="bg-light d-flex flex-column align-items-center mt-5">
+    <c-container>
+        <c-row class="justify-content-center">
+            <c-col class="custom-col-xxl-16" md="10" sm="12">
+                <c-card-group class="shadow-0 border-0">
+                    <c-card class="p-4 border-0"></c-card>
+                </c-card-group>
+            </c-col>
+        </c-row>
+    </c-container>
+</div>
+
+<div class="container-fluid pb-5 font-roboto shadow-lg">
+    <div class="row px-xl-5">
+        <div class="col-lg-5 mb-30">
+            <div id="product-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner bg-light">
+                    <div class="carousel-item active">
+                        <img class="w-100 " style="height: 400px;" [src]="businessProfileDetails?.businessLogo"
+                            alt="Image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" style="height: 400px;" [src]="businessProfileDetails?.registredCertificate"
+                            alt="Image" />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#product-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#product-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <br>
+            <br>
+            <h2 class="section-title shadow-lg p3 rounded position-relative text-uppercase mx-xl-5 mb-4">
+                <span class="bg-secondary pr-3">Business Owner Information</span>
+            </h2>
+
+<div class="shadow-lg rounded m-4 p-4 ">
+    <h4>Name: <span class="text-info fw-bold">{{ businessProfileDetails?.user?.name }}</span></h4>
+
+    <h4>Email: <span class="text-info fw-bold">{{ businessProfileDetails?.user?.email }}</span></h4>
+    <h4>Home Address: <span class="text-info fw-bold">{{ businessProfileDetails?.user?.homeAddress }}</span></h4>
+    <h4>phone No: <span class="text-info fw-bold">{{ businessProfileDetails?.user?.phoneNo }}</span></h4>
+    <h4>Account Type: <span class="text-info fw-bold">{{ businessProfileDetails?.user?.role }}</span></h4>
+
+    <div class="shadow-lg rounded">
+        <img class="w-100" style="height: 400px;" [src]="businessProfileDetails?.user?.url"
+            alt="Image" />
+    </div>
+</div>
+
+ 
+
+        </div>
+
+        <div class="col-lg-7 h-auto mb-30">
+            <div class="h-100 bg-light p-30">
+                <h3>Business Name: <span class="text-info fw-bold">{{businessProfileDetails?.businessName }}</span></h3>
+                <h4>Tagline: <span class="text-info fw-bold">{{ businessProfileDetails?.tagLine }}</span></h4>
+
+                <c-row class="justify-content-left  py-2 px-3">
+                    <c-col xs="12" sm="10" md="12" lg="12" xl="12" class="bg-light dark:bg-transparent">
+                        <c-card-body class="row g-3 loan-form shadow-lg justify-content-left">
+
+
+                            <c-col [md]="3" class="shadow-lg rounded m-1">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col">
+                                        <img src="../../../../assets//images//abt3.JPG" class="img-fluid"
+                                            style="width: 150px" alt="">
+                                    </div>
+                                    <div class="col text-center">
+                                        <p>Category: <span class="text-info fw-bold">{{
+                                                businessProfileDetails?.businessCategory }}</span> </p>
+                                    </div>
+                                </div>
+                            </c-col>
+
+                            <c-col [md]="3" class="shadow-lg rounded m-1">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col">
+                                        <img src="../../../../assets//images//abt3.JPG" class="img-fluid"
+                                            style="width: 150px" alt="">
+                                    </div>
+                                    <div class="col text-center">
+                                        <p>No of Workers: <span class="text-info fw-bold">{{
+                                                businessProfileDetails?.businessSize }}</span></p>
+                                    </div>
+                                </div>
+                            </c-col>
+
+
+                            <c-col [md]="3" class="shadow-lg rounded m-1">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col">
+                                        <img src="../../../../assets//images//abt3.JPG" class="img-fluid"
+                                            style="width: 150px" alt="">
+                                    </div>
+                                    <div class="col text-center">
+                                        <p>Business Address: <span class="text-info fw-bold"> {{
+                                                businessProfileDetails?.businessAddress }}</span></p>
+                                    </div>
+                                </div>
+                            </c-col>
+
+
+
+                        </c-card-body>
+                    </c-col>
+                </c-row>
+
+                <!-- TODO Some details here -->
+
+                <div class="row px-xl-5">
+                    <div class="col">
+                        <div class="bg-light p-30">
+                            <div class="nav nav-tabs mb-4">
+                                <a class="nav-item nav-link text-dark active" data-toggle="tab">Description</a>
+                            </div>
+                            <div class="tab-content shadow-lg rounded py-4">
+                                <div class="tab-pane fade show active rounded m-4" id="tab-pane-1">
+                                    <h4 class="mb-3">Business Detils</h4>
+                                    <p>{{ businessProfileDetails?.businessBiography }}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<app-footer> </app-footer>

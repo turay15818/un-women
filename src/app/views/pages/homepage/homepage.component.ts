@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 export class HomepageComponent implements OnInit {
   products: any;
   recentProduct: any;
-
+  isLoading: boolean = false;
   @ViewChild('heroCarousel', { static: false })
   heroCarousel: ElementRef | null = null;
 
@@ -20,9 +20,19 @@ export class HomepageComponent implements OnInit {
     private recentProductService: RecentProductService,
     private router: Router
   ) {}
+
   navigateToProductDetails(uid: string) {
     this.router.navigate(['product-details', uid]);
   }
+
+  navigateToProductCategories(category: string) {
+    this.router.navigate(['product-categories', category]);
+  }
+
+  navigateToBusinessCategories(businessCategory: string) {
+    this.router.navigate(['business-categories', businessCategory]);
+  }
+
   ngOnInit(): void {
     if (this.heroCarousel) {
       const carouselElement = this.heroCarousel.nativeElement;

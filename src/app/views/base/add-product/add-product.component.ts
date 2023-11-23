@@ -10,19 +10,20 @@ import { AddProductService } from 'src/Service/add-product.service';
 })
 export class AddProductComponent {
   productForm: FormGroup;
-
+  isLoading: boolean = false;
+  loadingMessage = 'Creating your Product...';
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private businessProfileService: AddProductService
+    private addProduct: AddProductService
   ) {
     this.productForm = this.formBuilder.group({
       productName: ['', Validators.required],
       discription: ['', Validators.required],
-      category: ['', Validators.required],
+      category: ['Select Category', Validators.required],
       previousPrice: ['', Validators.required],
       currentPrice: ['', Validators.required],
-      rating: ['', Validators.required],
+      rating: ['', null],
       productImageOne: [null, Validators.required],
       productImageTwo: [null, Validators.required],
       productImageThree: [null],
@@ -35,64 +36,54 @@ export class AddProductComponent {
   showSuccessMessage = false;
 
   onSubmit() {
+    this.isLoading = true;
+    this.loadingMessage = 'Creating your Product...';
     if (this.productForm.invalid) {
       return;
     }
-  
+
     const formData = this.getFormDataFromForm();
-  
-    this.businessProfileService.addProduct(formData).subscribe(
-      (response) => {
-        console.log('Product created successfully:', response);
-  
-        // Display a success message
-        this.showSuccessMessage = true;
-  
-        // Hide the success message after 3 seconds
-        setTimeout(() => {
-          this.showSuccessMessage = false;
-        }, 3000);
-  
-        // Reset the form fields
-        this.productForm.reset();
-      },
-      (error) => {
-        console.error('Error creating Product:', error);
-      }
-    );
+
+    this.addProduct
+      .addProduct(formData)
+      .subscribe(
+        (response) => {
+          this.router.navigate(['dashboard']);
+          console.log(this.addProduct, 'This was the data sent to the server');
+          console.log('Product created successfully:', response);
+        },
+        (error) => {
+          console.error('Error creating Product:', error);
+        }
+      )
+      .add(() => {
+        this.isLoading = false;
+        this.loadingMessage = '';
+      });
   }
-  
 
   
-  // onSubmit() {
-  //   if (this.productForm.invalid) {
-  //     return;
-  //   }
-
-  //   const formData = this.getFormDataFromForm();
-
-  //   this.businessProfileService.addProduct(formData).subscribe(
-  //     (response) => {
-  //       console.log('Business Profile created successfully:', response);
-  //     },
-  //     (error) => {
-  //       console.error('Error creating Business Profile:', error);
-  //     }
-  //   );
-  // }
-
   onFileSelected(event: any, controlName: string) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const fileContent = e.target.result;
-        this.productForm.get(controlName)!.setValue(file);
-      };
-
-      reader.readAsDataURL(file);
+      const maxSize = 4.5 * 1024 * 1024;
+      if (file.size <= maxSize) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          const fileContent = e.target.result;
+          this.productForm.get(controlName)!.setValue(file);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please select an image that is less than 5MB in size.');
+        event.target.value = '';
+      }
     }
   }
+
+
+
+
 
   private getFormDataFromForm(): FormData {
     const formData = new FormData();

@@ -1,25 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AccordionsComponent } from './accordion/accordions.component';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { CardsComponent } from './cards/cards.component';
-import { CarouselsComponent } from './carousels/carousels.component';
-import { CollapsesComponent } from './collapses/collapses.component';
-import { ListGroupsComponent } from './list-groups/list-groups.component';
-import { NavsComponent } from './navs/navs.component';
-import { PaginationsComponent } from './paginations/paginations.component';
-import { PopoversComponent } from './popovers/popovers.component';
-import { ProgressComponent } from './progress/progress.component';
-import { SpinnersComponent } from './spinners/spinners.component';
-import { TablesComponent } from './tables/tables.component';
-import { TooltipsComponent } from './tooltips/tooltips.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { PlaceholdersComponent } from './placeholders/placeholders.component';
-import {CreateBusinessProfileComponent} from './create-business-profile/create-business-profile.component'
+import { ProductsByUserDetailsComponent } from './products-by-user-details/products-by-user-details.component';
+import { CreateBusinessProfileComponent } from './create-business-profile/create-business-profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
-
+import { UsersComponent } from './users/users.component';
+import { UserByIdComponent } from './user-by-id/user-by-id.component';
+import { ProductsByUserComponent } from './products-by-user/products-by-user.component';
+import { MentorProfileComponent } from './mentor-profile/mentor-profile.component';
 
 const routes: Routes = [
   {
@@ -33,18 +21,33 @@ const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'cards',
       },
-      {
-        path: 'accordion',
-        component: AccordionsComponent,
-        data: {
-          title: 'Accordion',
-        },
-      },
+
       {
         path: 'user-profile',
         component: UserProfileComponent,
         data: {
           title: 'User Profile',
+        },
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'Users',
+        },
+      },
+      {
+        path: 'my-profile',
+        component: MentorProfileComponent,
+        data: {
+          title: 'My Profile',
+        },
+      },
+      {
+        path: 'users-by-id/:id',
+        component: UserByIdComponent,
+        data: {
+          title: 'User By ID',
         },
       },
       {
@@ -55,101 +58,17 @@ const routes: Routes = [
         },
       },
       {
-        path: 'breadcrumbs',
-        component: BreadcrumbsComponent,
+        path: 'products-by-role',
+        component: ProductsByUserComponent,
         data: {
-          title: 'Breadcrumbs',
+          title: 'My Product',
         },
       },
       {
-        path: 'cards',
-        component: CardsComponent,
+        path: 'my-product-details/:id',
+        component: ProductsByUserDetailsComponent,
         data: {
-          title: 'Cards',
-        },
-      },
-      {
-        path: 'carousel',
-        component: CarouselsComponent,
-        data: {
-          title: 'Carousel',
-        },
-      },
-      {
-        path: 'collapse',
-        component: CollapsesComponent,
-        data: {
-          title: 'Collapse',
-        },
-      },
-      {
-        path: 'list-group',
-        component: ListGroupsComponent,
-        data: {
-          title: 'List Group',
-        },
-      },
-      {
-        path: 'navs',
-        component: NavsComponent,
-        data: {
-          title: 'Navs & Tabs',
-        },
-      },
-      {
-        path: 'pagination',
-        component: PaginationsComponent,
-        data: {
-          title: 'Pagination',
-        },
-      },
-      {
-        path: 'placeholder',
-        component: PlaceholdersComponent,
-        data: {
-          title: 'Placeholder',
-        },
-      },
-      {
-        path: 'popovers',
-        component: PopoversComponent,
-        data: {
-          title: 'Popovers',
-        },
-      },
-      {
-        path: 'progress',
-        component: ProgressComponent,
-        data: {
-          title: 'Progress',
-        },
-      },
-      {
-        path: 'spinners',
-        component: SpinnersComponent,
-        data: {
-          title: 'Spinners',
-        },
-      },
-      {
-        path: 'tables',
-        component: TablesComponent,
-        data: {
-          title: 'Tables',
-        },
-      },
-      {
-        path: 'tabs',
-        component: TabsComponent,
-        data: {
-          title: 'Tabs',
-        },
-      },
-      {
-        path: 'tooltips',
-        component: TooltipsComponent,
-        data: {
-          title: 'Tooltips',
+          title: 'My Product Details',
         },
       },
     ],
@@ -161,4 +80,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class BaseRoutingModule {}
-

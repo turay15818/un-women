@@ -21,3 +21,11 @@ $enable-rtl: true;
 
 // If you want to add something do it here
 @import "custom";
+body,
+.navbar,
+.btn,
+.form-control,
+.table,
+.alert {
+  font-family: 'Roboto', sans-serif;
+}

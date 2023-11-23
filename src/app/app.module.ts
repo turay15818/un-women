@@ -7,10 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
-
+import {DataTablesModule} from 'angular-datatables';
 // Import app component
 import { AppComponent } from './app.component';
 
@@ -54,6 +53,7 @@ const APP_CONTAINERS = [
 @NgModule({
   declarations: [AppComponent, ...APP_CONTAINERS,],
   imports: [
+    DataTablesModule,
     NavbarComponent,
     BrowserModule,
     BrowserAnimationsModule,

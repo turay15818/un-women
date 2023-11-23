@@ -1,0 +1,276 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
+
+
+<c-row class="justify-content-center" *ngIf="!Data || Data.length === 0">
+    <c-col xs="12" sm="10" md="2" lg="12">
+
+        <div class="mx-5 font-roboto fw-bold">
+            <div *ngIf="successMessage" class="success-message text-success" >
+                {{ successMessage }}
+            </div>
+
+            <div *ngIf="errorMessage" class=" danger-message text-danger">
+                {{ errorMessage }}
+            </div>
+
+            <form [formGroup]="mentorProfileForm" (submit)="submitForm()" class="my-5 row g-3">
+    
+                <h3 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+                    <span class="bg-info pr-3">NOTE: All Fields Mark with <span style="color: red">**</span> are required</span>
+                </h3>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="description">About <span style="color: red">**</span></label>
+                        <textarea id="description" name="description" formControlName="description"
+                            class="form-control form-control-lg shadow-lg"></textarea>
+                    </div>
+                </c-col>
+
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="skills">Skills <span style="color: red">**</span>
+                        </label>
+                        <textarea type="text" id="skills" formControlName="skills" required formControlName="skills"
+                            class="form-control form-control-lg shadow-lg"> </textarea>
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="experience">Experience <span style="color: red">**</span>
+                        </label>
+                        <textarea type="text" id="experience" formControlName="experience" required
+                            formControlName="experience" class="form-control form-control-lg shadow-lg"> </textarea>
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="education">Education <span style="color: red">**</span>
+                        </label>
+                        <textarea type="text" id="education" formControlName="education" required
+                            formControlName="education" class="form-control form-control-lg shadow-lg"> </textarea>
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="languages">Languages <span style="color: red">**</span>
+                        </label>
+                        <textarea type="text" id="languages" formControlName="languages" required
+                            formControlName="languages" class="form-control form-control-lg shadow-lg"> </textarea>
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="languages">Availability <span style="color: red">**</span>
+                        </label>
+                        <textarea type="text" id="availability" formControlName="availability" required
+                            formControlName="availability" class="form-control form-control-lg shadow-lg"> </textarea>
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="linkedinProfile">Linkedin Profile <span style="color: red">**</span>
+                        </label>
+                        <input type="text" id="linkedinProfile" formControlName="linkedinProfile" required
+                            formControlName="linkedinProfile" class="form-control form-control-lg shadow-lg" />
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="languages">Website <span style="color: red">**</span>
+                        </label>
+                        <input type="text" id="website" formControlName="website" required formControlName="website"
+                            class="form-control form-control-lg shadow-lg" />
+                    </div>
+                </c-col>
+
+                <c-col [md]="6">
+                    <div class="form-group">
+                        <label for="noOfMentee">No Of Mentee <span style="color: red">**</span>
+                        </label>
+                        <input type="number" id="noOfMentee" formControlName="noOfMentee" required
+                            formControlName="noOfMentee" class="form-control form-control-lg shadow-lg" />
+                    </div>
+                </c-col>
+                <c-col [md]="6">
+                    <div class="mt-3 pt-2">
+
+                        <button class="btn btn-primary form-control btn-lg" type="submit" (click)="submitForm()"
+                            [disabled]="isLoading" [disabled]="isSubmitting">
+                            Create Product
+                            <div class="spinner-border text-warning" role="status" *ngIf="isLoading">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <span *ngIf="isLoading" class="text-danger">{{ loadingMessage }}</span>
+                        </button>
+                    </div>
+
+                </c-col>
+            </form>
+        </div>
+    </c-col>
+</c-row>
+
+
+
+<div class="container" *ngIf="Data">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+            <div class="card border-0 shadow-lg">
+                <img src="{{ Data.user.url }}" alt="..." class="rounded shadow-lg">
+                <div class="card-body p-1-9 p-xl-5">
+                    <div class="mb-4">
+                        <h3 class="h4 mb-0">{{ Data.user.name }}</h3>
+                        <span class="text-primary">{{ Data.user.role }}</span>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{
+                                Data.user.email }}</a></li>
+                        <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>{{
+                                Data.user.phoneNo }}</a></li>
+                        <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>{{
+                                Data.user.homeAddress }}</a></li>
+                    </ul>
+                    <ul class="social-icon-style2 ps-0">
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8">
+            <div class="ps-lg-1-6 ps-xl-5">
+                <div ngbAccordion #accordion="ngbAccordion">
+                    <div ngbAccordionItem="first">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#About Me</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ Data.description }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ngbAccordionItem="second">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Experience</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ Data.experience }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div ngbAccordionItem="third">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Education</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ Data.education }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ngbAccordionItem="forth">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Skills</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ Data.skills }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div ngbAccordionItem="fifth">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Availability</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ Data.availability }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ngbAccordionItem="sixth">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Language Spoken</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ Data.languages }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

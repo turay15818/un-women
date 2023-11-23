@@ -1,0 +1,42 @@
+<!-- Navbar  -->
+<app-navbar> </app-navbar>
+
+<div class="bg-light d-flex flex-column align-items-center mt-5">
+    <c-container>
+        <c-row class="justify-content-center">
+            <c-col class="custom-col-xxl-16" md="10" sm="12">
+                <c-card-group class="shadow-0 border-0">
+                    <c-card class="p-4 border-0"></c-card>
+                </c-card-group>
+            </c-col>
+        </c-row>
+    </c-container>
+</div>
+
+<div class="container-fluid pt-5 pb-3 shadow-lg font-roboto fw-bold">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+        <span class="bg-secondary pr-3">Recent Products</span>
+    </h2>
+    <div class="row px-xl-5">
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let mentor of Data">
+            <div class="product-item bg-light mb-4 shadow-lg rounded">
+                <div class="product-img position-relative overflow-hidden">
+                    <a class="text-decoration-none" [routerLink]="['/mentors-details', mentor.uuid]">
+                        <img class="img-fluid w-100" [src]="mentor.user.url" alt="" style="height: 300px;" />
+                        <div class="product-action">
+                            <a class="text-decoration-none" class="btn btn-outline-dark">See Mentor Profile</a>
+                        </div>
+                    </a>
+                </div>
+                <div class="text-center py-2">
+                    <p class="h5 text-decoration-none">{{ mentor.user.name }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer  -->
+<app-footer> </app-footer>

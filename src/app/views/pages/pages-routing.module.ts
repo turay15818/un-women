@@ -10,6 +10,16 @@ import { AboutComponent } from './about/about.component';
 import { BusinessComponent } from './business/business.component';
 import { BlogComponent } from './blog/blog.component';
 import { NavbarComponent } from '@coreui/angular';
+import { ProductcategoriesComponent } from './productcategories/productcategories.component';
+import { BusinesscategoriesComponent } from './businesscategories/businesscategories.component';
+import { IndividualProductsComponent } from './individual-products/individual-products.component';
+import { BusinessProfileDetailsComponent } from './business-profile-details/business-profile-details.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FooterComponent } from './footer/footer.component';
+import { MentorsComponent } from './mentors/mentors.component';
+import { MentorDetailsComponent } from './mentor-details/mentor-details.component';
+
 const routes: Routes = [
   {
     path: '404',
@@ -61,11 +71,44 @@ const routes: Routes = [
     },
   },
   {
+    path: 'product-categories/:category',
+    component: ProductcategoriesComponent,
+    data: {
+      title: 'Product Category page',
+    },
+  },
+
+  {
+    path: 'business-categories/:businessCategory',
+    component: BusinesscategoriesComponent,
+    data: {
+      title: 'Business Category page',
+    },
+  },
+  {
+    path: 'usersProduct/:userId',
+    component: IndividualProductsComponent,
+    data: {
+      title: '',
+    },
+  },
+  {
+    path: 'businessProfile-details/:uuid',
+    component: BusinessProfileDetailsComponent,
+    data: {
+      title: '',
+    },
+  },
+  {
     path: 'navbar',
     component: NavbarComponent,
     data: {
       title: 'Navbar Page',
     },
+  },
+  {
+    path: 'footer',
+    component: FooterComponent,
   },
 
   {
@@ -76,11 +119,33 @@ const routes: Routes = [
     },
   },
   {
+    path: 'forget-passsword',
+    component: ForgetPasswordComponent,
+    data: {
+      title: 'Forget Password Page',
+    },
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    data: {
+      title: 'Reset Password Page',
+    },
+  },
+  {
     path: 'register',
     component: RegisterComponent,
     data: {
       title: 'Register Page',
     },
+  },
+  {
+    path: 'mentors',
+    component: MentorsComponent,
+  },
+  {
+    path: 'mentors-details/:uuid',
+    component: MentorDetailsComponent,
   },
 ];
 

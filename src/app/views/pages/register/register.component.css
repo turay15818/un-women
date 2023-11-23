@@ -1,13 +1,24 @@
 .bg-image {
-    background-image: url("../../../../assets//images/loginpage.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  background-image: url("../../../../assets//images/loginpage.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+}
+
+/* .success-message {
+  color: green;
+} */

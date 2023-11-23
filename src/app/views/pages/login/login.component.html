@@ -1,86 +1,100 @@
-<!-- <div class="bg-light min-vh-100 d-flex flex-row align-items-center"> -->
-<div class="bg-image">
-  <h3><marquee behavior="" direction="">Welcome to UN Women Market Square</marquee></h3>
+<!-- TODO Modal start here -->
+<ng-template #content let-c="close" let-d="dismiss" class="bg-light dark:bg-transparent">
+  <div class="modal-header bg-info shadow-lg">
+    <h4 class="modal-title font-roboto fw-bold text-white" id="modal-basic-title">Enter Your Email Address</h4>
+    <button type="button" class="btn-close text-white shadow-lg" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+
+  <div class="modal-body">
+    <app-forget-password> </app-forget-password>
+
+  </div>
+
+</ng-template>
+
+
+
+<div class="bg-image font-roboto fw-bold">
   <c-container>
     <c-row class="justify-content-center rounded">
-    
+
       <div class="container py-5 h-80">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-xl-10">
             <div class="card" style="border-radius: 1rem">
               <div class="row g-0">
-                <div class="col-md-6 col-lg-5 d-none d-md-block">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                    alt="login form"
-                    class="img-fluid"
-                    style="border-radius: 1rem 0 0 1rem"
-                  />
+                <div class="col-md-6 col-lg-5 d-none d-md-block bg-info">
+                  <img src="../../../../assets//images/loginImg.jpg" alt="login form" class="img-fluid"
+                    style=" height:650px" />
                 </div>
                 <div class="col-md-6 col-lg-7 d-flex align-items-center shadow-lg">
                   <div class="card-body p-4 p-lg-4 text-black">
-                    <form (ngSubmit)="onSubmit()" class="">
+                    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
                       <div class="d-flex align-items-center mb-2 pb-1">
-                        
-                        <span class="h1 fw-bold mb-0"
-                          ><img
-                            src="../../../../assets/img//brand/un-women-logo.png"
-                            alt="login form"
-                            class="img-fluid"
-                            style="border-radius: 1rem 0 0 1rem"
-                        /></span>
+
+                        <span class="h1 fw-bold mb-0"><img src="../../../../assets/img//brand/un-women-logo.png"
+                            alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem" /></span>
                       </div>
-    
+
                       <h5 class="fw-normal mb-2 pb-3" style="letter-spacing: 1px">
                         Sign into your account
                       </h5>
-                      <div class="form-outline mb-2">
-                        <input
-                          type="email"
-                          placeholder="example@gmail.com"
-                          id="email"
-                          class="form-control form-control-lg shadow-lg"
-                          [(ngModel)]="email"
-                          required
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-    
-                        <label class="form-label" for="form2Example17"
-                          >Email address</label
-                        >
+                      <div class="error-message text-danger text-center" *ngIf="errorMessage">
+                        <h4>{{ errorMessage }}</h4>
                       </div>
-    
                       <div class="form-outline mb-2">
-                        <input
-                          class="form-control form-control-lg shadow-lg"
-                          type="password"
-                          placeholder="********"
-                          id="password"
-                          [(ngModel)]="password"
-                          required
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-    
-                        <label class="form-label" for="password">Password</label>
+                        <input type="email" placeholder="example@gmail.com" id="email" name="email"
+                          class="form-control form-control-lg shadow-lg" [(ngModel)]="email" required
+                          [ngModelOptions]="{ standalone: true }" #emailField="ngModel" />
+
+                        <label class="form-label" for="form2Example17">Email address <span
+                            style="color: red">**</span></label>
+                        <div *ngIf="
+                          emailField.invalid &&
+                          (emailField.dirty || emailField.touched)
+                        " class="alert alert-danger">
+                          Email is required
+                        </div>
+
                       </div>
+
+                      <div class="form-outline mb-2">
+                        <input class="form-control form-control-lg shadow-lg" type="password" placeholder="********"
+                          id="password" name="password" [(ngModel)]="password" required
+                          [ngModelOptions]="{ standalone: true }" #passwordField="ngModel" />
+                        <label class="form-label" for="password">Password <span style="color: red">**</span></label>
+                        <div *ngIf="
+                          passwordField.invalid &&
+                          (passwordField.dirty || passwordField.touched)
+                        " class="alert alert-danger">
+                          Password is required
+                        </div>
+
+                      </div>
+
                       <div class="d-grid pt-1 mb-2 shadow-lg">
-                        <button
-                          class="btn btn-dark btn-lg shadow-lg"
-                          style="background-color: #009edd; border: none"
-                          type="submit"
-                        >
+                        <button class="btn btn-info btn-lg shadow-lg position-relative"
+                          style="background-color: #009edd; border: none" type="submit">
                           Login
+                          <div class="spinner-border text-info" role="status" *ngIf="isLoading">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
                         </button>
                       </div>
-    
-                      <a class="small text-muted" href="#!">Forgot password?</a>
+                      <div class="verification-message text-center" *ngIf="isLoading">Verifying your login</div>
+                      <a class="small text-muted" href="forget-passsword"><c-col [md]="12">
+                          <button class="btn  mb-4 me-2 shadow-lg font-roboto fw-bold text-danger"
+                            (click)="openXl(content)">Forget Password</button>
+                        </c-col></a>
                       <p class="pb-lg-2" style="color: #393f81">
                         Don't have an account?
-                        <a href="register" style="color: #393f81"
-                          >Register here</a
-                        >
+                        <a href="register" style="color: #393f81">Register here</a>
                       </p>
-    
+
+                      <p class="pb-lg-2" style="color: #393f81">
+                        <a href="/home" style="color: #393f81">Back to Home</a>
+                      </p>
+
                       <a href="#!" class="small text-muted">Terms of use.</a>
                       <a href="#!" class="small text-muted">Privacy policy</a>
                     </form>
@@ -91,8 +105,10 @@
           </div>
         </div>
       </div>
-
-
     </c-row>
   </c-container>
 </div>
+
+
+<!-- Footer  -->
+<app-footer> </app-footer>

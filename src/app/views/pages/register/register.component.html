@@ -1,77 +1,43 @@
-<div class="bg-image">
+<div class="bg-image font-roboto fw-bold">
   <h3></h3>
   <c-container>
     <c-row class="justify-content-center rounded">
-      <img
-        src="../../../../assets/img/brand/un-women-logo.png"
-        alt=""
-        class="img-fluid"
-        style="max-width: 60%"
-      />
+      <img src="../../../../assets/img/brand/un-women-logo.png" alt="" class="img-fluid" style="max-width: 60%" />
 
       <div class="container py-5 h-80">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col col-xl-10">
             <div class="card" style="border-radius: 1rem">
               <div class="row g-0">
-                <form
-                  (ngSubmit)="onSubmit()"
-                  class="rounded my-3 p-4"
-                  #userForm="ngForm"
-                >
-                  <h2
-                    class="font-weight-bold text-center"
-                    style="font-weight: 700; color: rgba(0, 0, 0, 0.616)"
-                  >
+                <form (ngSubmit)="onSubmit()" class="rounded my-3 p-4" #userForm="ngForm">
+                  <h2 class="font-weight-bold text-center" style="font-weight: 700; color: rgba(0, 0, 0, 0.616)">
                     Create An Account With Us Today For Free
                   </h2>
-
+                  <h3>NOTE: All Fields Mark with <span style="color: red">**</span> are required <span style="color: red">and all images should be less than 5mb</span></h3>
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          [(ngModel)]="user.name"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                          #nameField="ngModel"
-                        />
-                        <label class="form-label" for="firstName"
-                          >Full Name</label
-                        >
+                        <input type="text" id="name" name="name" [(ngModel)]="user.name" required
+                          class="form-control form-control-lg shadow-lg" #nameField="ngModel" />
+                        <label class="form-label" for="firstName">Full Name <span style="color: red">**</span></label>
                         <!-- Error message -->
-                        <div
-                          *ngIf="
+                        <div *ngIf="
                             nameField.invalid &&
                             (nameField.dirty || nameField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
+                          " class="alert alert-danger">
                           Full Name is required
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          [(ngModel)]="user.email"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                          #emailField="ngModel"
-                        />
-                        <label class="form-label" for="Email">Email</label>
-                        <div
-                          *ngIf="
+                        <input type="email" id="email" name="email" [(ngModel)]="user.email" required
+                          class="form-control form-control-lg shadow-lg" #emailField="ngModel" />
+                        <label class="form-label" for="Email">Email <span style="color: red">**</span></label>
+                        <div *ngIf="
                             emailField.invalid &&
                             (emailField.dirty || emailField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
+                          " class="alert alert-danger">
                           Email is required
                         </div>
                       </div>
@@ -81,52 +47,32 @@
                   <div class="row">
                     <div class="col-md-6 mb-4 d-flex align-items-center">
                       <div class="form-outline datepicker w-100">
-                        <select
-                          class="form-select form-select-lg shadow-lg"
-                          aria-label=".form-select-lg example"
-                          id="role"
-                          name="role"
-                          [(ngModel)]="user.role"
-                          required
-                          #roleField="ngModel"
-                        >
+                        <select class="form-select form-select-lg shadow-lg" aria-label=".form-select-lg example"
+                          id="role" name="role" [(ngModel)]="user.role" required #roleField="ngModel">
                           <option selected>Sign In As</option>
                           <option value="Customer">Customer</option>
                           <option value="Vendor">Vendor</option>
                           <option value="Mentor">Mentor</option>
                         </select>
 
-                        <label for="role" class="form-label">Sign in As</label>
-                        <div
-                          *ngIf="
+                        <label for="role" class="form-label">Sign in As <span style="color: red">**</span></label>
+                        <div *ngIf="
                             roleField.invalid &&
                             (roleField.dirty || roleField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
+                          " class="alert alert-danger">
                           Role is required
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4 d-flex align-items-center">
                       <div class="form-outline datepicker w-100">
-                        <input
-                          type="tel"
-                          id="phoneNo"
-                          name="phoneNo"
-                          [(ngModel)]="user.phoneNo"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                          #phoneNoField="ngModel"
-                        />
-                        <label for="phoneno" class="form-label">Phone No</label>
-                        <div
-                          *ngIf="
+                        <input type="tel" id="phoneNo" name="phoneNo" [(ngModel)]="user.phoneNo" required
+                          class="form-control form-control-lg shadow-lg" #phoneNoField="ngModel" />
+                        <label for="phoneno" class="form-label">Phone No <span style="color: red">**</span></label>
+                        <div *ngIf="
                             phoneNoField.invalid &&
                             (phoneNoField.dirty || phoneNoField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
+                          " class="alert alert-danger">
                           Phone Number is required
                         </div>
                       </div>
@@ -134,115 +80,95 @@
                   </div>
 
                   <div class="row">
+
                     <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
-                        <input
-                          type="password"
-                          id="password"
-                          name="password"
-                          [(ngModel)]="user.password"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                          #passwordField="ngModel"
-                        />
-                        <label class="form-label" for="emailAddress"
-                          >Password</label
-                        >
+                        <input type="password" id="password" name="password" [(ngModel)]="user.password" required
+                          [attr.minlength]="8" [pattern]="'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'"
+                          class="form-control form-control-lg shadow-lg" #passwordField="ngModel" />
+                        <label class="form-label" for="password">Password <span style="color: red">**</span></label>
+                        <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)">
+                          <div
+                            [ngClass]="{'error-message': !isPasswordValid(passwordField), 'success-message': isPasswordValid(passwordField)}">
+                            <div *ngIf="hasError(passwordField, 'required')">Password is required.</div>
+                            <div *ngIf="hasError(passwordField, 'minlength')">Password must be at least 8 characters
+                              long.</div>
+                            <div *ngIf="hasError(passwordField, 'pattern')">
+                              Password must contain at least one lowercase letter, one uppercase letter, one digit, and
+                              one special character.
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <input type="password" id="confPassword" name="confPassword" [(ngModel)]="user.confPassword"
+                          required [attr.minlength]="8"
+                          [pattern]="'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])'"
+                          class="form-control form-control-lg shadow-lg" #confPasswordField="ngModel" />
+                        <label class="form-label" for="confPassword">Confirm Password <span
+                            style="color: red">**</span></label>
                         <div
-                          *ngIf="
-                            passwordField.invalid &&
-                            (passwordField.dirty || passwordField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
-                          Password is required
+                          *ngIf="confPasswordField.invalid && (confPasswordField.dirty || confPasswordField.touched)">
+                          <div *ngIf="hasError(confPasswordField, 'required')">Confirm Password is required.</div>
+                          <div *ngIf="hasError(confPasswordField, 'minlength')">Confirm Password must be at least 8
+                            characters
+                            long.
+                          </div>
+                          <div *ngIf="hasError(confPasswordField, 'pattern')">
+                            Password must contain at least one lowercase letter, one uppercase letter, one digit, and
+                            one special character.
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 mb-4 pb-2">
-                      <div class="form-outline">
-                        <input
-                          type="password"
-                          id="confPassword"
-                          name="confPassword"
-                          [(ngModel)]="user.confPassword"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                          #confPasswordField="ngModel"
-                        />
-                        <label class="form-label" for="confPassword"
-                          >Confirm Password</label
-                        >
-                        <div
-                          *ngIf="
-                            confPasswordField.invalid &&
-                            (confPasswordField.dirty ||
-                              confPasswordField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
-                          Confirm Password is required
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
 
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
-                        <input
-                          type="text"
-                          id="homeAddress"
-                          name="homeAddress"
-                          [(ngModel)]="user.homeAddress"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                          #homeAddressField="ngModel"
-                        />
-                        <label class="form-label" for="role"
-                          >Home Address</label
-                        >
-                        <div
-                          *ngIf="
+                        <input type="text" id="homeAddress" name="homeAddress" [(ngModel)]="user.homeAddress" required
+                          class="form-control form-control-lg shadow-lg" #homeAddressField="ngModel" />
+                        <label class="form-label" for="role">Home Address <span style="color: red">**</span></label>
+                        <div *ngIf="
                             homeAddressField.invalid &&
                             (homeAddressField.dirty || homeAddressField.touched)
-                          "
-                          class="alert alert-danger"
-                        >
+                          " class="alert alert-danger">
                           Address is required
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
-                        <input
-                          type="file"
-                          id="file"
-                          name="file"
-                          (change)="onFileSelected($event)"
-                          accept=".jpg, .jpeg, .png"
-                          required
-                          class="form-control form-control-lg shadow-lg"
-                        />
-                        <label class="form-label" for="profileimage"
-                          >Profile Image</label
-                        >
+                        <input type="file" id="file" name="file" (change)="onFileSelected($event)"
+                          accept=".jpg, .jpeg, .png" required class="form-control form-control-lg shadow-lg" />
+                        <label class="form-label" for="profileimage">Profile Image <span
+                            style="color: red">**</span></label>
                       </div>
                     </div>
                   </div>
 
                   <div class="text-right">
-                    <a href="/login"  style="text-decoration: none;">Already have an Account?</a>
+                    <a href="/login" style="text-decoration: none;">Already have an Account?</a>
                   </div>
-                  
+                  <div class="text-right">
+                    <a href="/home" style="text-decoration: none;">Back to Home</a>
+                  </div>
+
+                  <!-- [disabled]="userForm.invalid" -->
 
                   <div class="mt-4 pt-2">
                     <div class="d-grid gap-2">
-                      <button
-                        class="btn btn-primary btn-lg"
-                        type="submit"
-                        [disabled]="userForm.invalid"
-                      >
+                      <button class="btn btn-primary btn-lg" type="submit">
                         Submit
                       </button>
                     </div>
@@ -256,3 +182,8 @@
     </c-row>
   </c-container>
 </div>
+
+
+
+<!-- Footer  -->
+<app-footer> </app-footer>

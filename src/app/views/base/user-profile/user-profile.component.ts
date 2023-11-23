@@ -13,6 +13,8 @@ export class UserProfileComponent implements OnInit {
   businessProfileForm: FormGroup;
   userData: any;
   Data: any;
+  isLoading: boolean = false;
+  loadingMessage = 'Creating your Business Profile .....';
 
   constructor(
     private userService: UserService,
@@ -21,9 +23,17 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) {
     this.businessProfileForm = this.formBuilder.group({
-      businessSize: ['', Validators.required],
-      tagLine: ['', Validators.required],
+      // businessSize: ['', null],
+      // tagLine: ['', null],
+      // businessName: ['', null],
+      // businessAddress: ['', null],
+      // businessBiography: ['', null],
+      // businessCategory: ['', null],
       businessName: ['', Validators.required],
+      businessSize: ['', Validators.required],
+      businessPhoneNo: ['', Validators.required],
+      businessEmail: ['', Validators.required],
+      tagLine: ['', Validators.required],
       businessAddress: ['', Validators.required],
       businessBiography: ['', Validators.required],
       businessCategory: ['', Validators.required],
@@ -32,38 +42,79 @@ export class UserProfileComponent implements OnInit {
     });
   }
   onSubmit() {
+    this.isLoading = true;
+    this.loadingMessage = 'Creating your Business Profile .....';
     if (this.businessProfileForm.invalid) {
       return;
     }
 
     const formData = this.getFormDataFromForm();
 
-    this.businessProfileService.createBusinessProfile(formData).subscribe(
-      (response) => {
-        console.log('Business Profile created successfully:', response);
-        this.router.navigate(['/add-product']);
-      },
-      (error) => {
-        console.error('Error creating Business Profile:', error);
-      }
-    );
+    this.businessProfileService
+      .createBusinessProfile(formData)
+      .subscribe(
+        (response) => {
+          console.log('Business Profile created successfully:', response);
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          console.error('Error creating Business Profile:', error);
+        }
+      )
+      .add(() => {
+        this.isLoading = false;
+        this.loadingMessage = '';
+      });
   }
+
+  onEditSubmit() {
+    this.isLoading = true;
+    this.loadingMessage = 'Updating your Business Profile .....';
+    // if (this.businessProfileForm.invalid) {
+    //   return;
+    // }
+
+    const formData = this.getFormDataFromForm();
+
+    this.businessProfileService
+      .editBusinessProfile(formData)
+      .subscribe(
+        (response) => {
+          console.log('Business Profile Updated successfully:', response);
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          console.error('Error Editing Business Profile:', error);
+        }
+      )
+      .add(() => {
+        this.isLoading = false;
+        this.loadingMessage = '';
+      });
+  }
+  
 
   onFileSelected(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const fileContent = e.target.result;
-        if (event.target.id === 'logo') {
-          this.businessProfileForm.get('logo')!.setValue(file);
-        } else if (event.target.id === 'certificate') {
-          this.businessProfileForm.get('certificate')!.setValue(file);
-        }
-        console.log(fileContent);
-      };
+      const maxSize = 4.5 * 1024 * 1024;
 
-      reader.readAsDataURL(file);
+      if (file.size <= maxSize) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          const fileContent = e.target.result;
+          if (event.target.id === 'logo') {
+            this.businessProfileForm.get('logo')!.setValue(file);
+          } else if (event.target.id === 'certificate') {
+            this.businessProfileForm.get('certificate')!.setValue(file);
+          }
+          console.log(fileContent);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please select an image that is less than 5MB in size.');
+        event.target.value = '';
+      }
     }
   }
 
@@ -83,6 +134,28 @@ export class UserProfileComponent implements OnInit {
     return formData;
   }
 
+  // ngOnInit(): void {
+  //   this.userService.getUserData().subscribe(
+  //     (userData) => {
+  //       this.userData = userData;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching user data:', error);
+  //     }
+  //   );
+
+  //   this.userService.getUserBusinessProfileById().subscribe(
+  //     (Data) => {
+  //       this.Data = Data;
+  //       console.log('Bo na d data this;', Data);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching user data:', error);
+  //     }
+  //   );
+  // }
+
+
   ngOnInit(): void {
     this.userService.getUserData().subscribe(
       (userData) => {
@@ -92,15 +165,33 @@ export class UserProfileComponent implements OnInit {
         console.error('Error fetching user data:', error);
       }
     );
-
+  
     this.userService.getUserBusinessProfileById().subscribe(
-      (Data) => {
-        this.Data = Data;
-        console.log('Bo na d data this;', Data);
+      (data) => {
+        this.Data = data;
+        console.log('Business profile data:', data);
+  
+        // Set the initial value for the 'businessName' form control
+        this.businessProfileForm.patchValue({
+          businessName: data[0].businessName,
+          businessSize: data[0].businessSize,
+          businessAddress: data[0].businessAddress,
+          businessBiography: data[0].businessBiography,
+          businessCategory: data[0].businessCategory,
+          tagLine: data[0].tagLine,
+          registredCertificate: data[0].registredCertificate,
+          businessLogo: data[0].businessLogo,
+        
+        });
       },
       (error) => {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching business profile data:', error);
       }
     );
   }
+  
+
+
+
+
 }

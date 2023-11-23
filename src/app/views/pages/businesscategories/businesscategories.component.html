@@ -1,0 +1,53 @@
+<app-navbar> </app-navbar>
+<div class="bg-light d-flex flex-column align-items-center mt-5">
+    <c-container>
+        <c-row class="justify-content-center">
+            <c-col class="custom-col-xxl-16" md="10" sm="12">
+                <c-card-group class="shadow-0 border-0">
+                    <c-card class="p-4 border-0"></c-card>
+                </c-card-group>
+            </c-col>
+        </c-row>
+    </c-container>
+</div>
+
+<div class="container-fluid pt-5 pb-3 shadow-lg font-roboto fw-bold">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+        <span class="bg-secondary pr-3">Registred Business</span>
+    </h2>
+    <div class="row px-xl-5">
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1" *ngFor="let product of businessCategories">
+            <div class="product-item bg-light mb-4">
+                <div class="product-img position-relative overflow-hidden">
+                    <a class="text-decoration-none" [routerLink]="['/businessProfile-details', product.uuid]" href="">
+                        <img class="img-fluid w-100" [src]="product.businessLogo" alt="" style="height: 300px;" />
+                        <div class="product-action">
+                            <a class="text-decoration-none" class="btn btn-outline-dark rounded shadow-lg">See Business
+                                Details
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="text-center py-4">
+                    <a class="h6 text-decoration-none text-truncate" href="">{{
+                        product.businessName
+                        }}</a>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        <h5>Category: <span class="text-success fw-bold">{{" " + product.businessCategory}}</span> </h5>
+                    </div>
+                    <a class="text-decoration-none" [routerLink]="['/usersProduct', product.userId]">
+                        <button class="btn btn-info btn-lg shadow-lg position-relative rounded fw-bold"
+                            style="background-color: #009edd; border: none" type="submit">
+                            Browse Shop
+                        </button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer  -->
+<app-footer> </app-footer>

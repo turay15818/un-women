@@ -1,0 +1,182 @@
+<!-- Navbar  -->
+<app-navbar> </app-navbar>
+
+<div class="bg-light d-flex flex-column align-items-center mt-5">
+    <c-container>
+        <c-row class="justify-content-center">
+            <c-col class="custom-col-xxl-16" md="10" sm="12">
+                <c-card-group class="shadow-0 border-0">
+                    <c-card class="p-4 border-0"></c-card>
+                </c-card-group>
+            </c-col>
+        </c-row>
+    </c-container>
+</div>
+
+
+
+<div class="container" *ngIf="mentorDetails">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+            <div class="card border-0 shadow-lg">
+                <img src="{{ mentorDetails.user.url }}" alt="..." class="rounded shadow-lg">
+                <div class="card-body p-1-9 p-xl-5">
+                    <div class="mb-4">
+                        <h3 class="h4 mb-0">{{ mentorDetails.user.name }}</h3>
+                        <span class="text-primary">{{ mentorDetails.user.role }}</span>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{
+                            mentorDetails.user.email }}</a></li>
+                        <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>{{
+                            mentorDetails.user.phoneNo }}</a></li>
+                        <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>{{
+                            mentorDetails.user.homeAddress }}</a></li>
+                    </ul>
+                    <ul class="social-icon-style2 ps-0">
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#!" class="rounded-3 bg-info"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8">
+            <div class="ps-lg-1-6 ps-xl-5">
+                <div ngbAccordion #accordion="ngbAccordion">
+                    <div ngbAccordionItem="first">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#About</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ mentorDetails.description }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ngbAccordionItem="second">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Experience</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ mentorDetails.experience }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div ngbAccordionItem="third">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Education</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ mentorDetails.education }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ngbAccordionItem="forth">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Skills</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ mentorDetails.skills }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div ngbAccordionItem="fifth">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Availability</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ mentorDetails.availability }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ngbAccordionItem="sixth">
+                        <h3 ngbAccordionHeader class="shadow-lg m-4">
+                            <button ngbAccordionButton class="">
+                                <h3 class="h3 text-primary py-4 fw-bold">#Language Spoken</h3>
+                            </button>
+                        </h3>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <div class="mb-5 wow fadeIn">
+                                        <div class="text-start mb-1-6 wow fadeIn">
+                                            <p class="shadow-lg p-4">{{ mentorDetails.languages }}</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer  -->
+<app-footer> </app-footer>

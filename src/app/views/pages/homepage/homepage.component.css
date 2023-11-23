@@ -1,3 +1,16 @@
+.font-roboto {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.bg-infoo {
+  background-color: #59a4f5;
+}
+
+.bg-infoo:hover {
+  background-color: #000000;
+  color: #59a4f5;
+}
+
 @media (min-width: 1400px) {
   .custom-col-xxl-16 {
     flex: 0 0 calc(100% / 12 * 17);
@@ -18,7 +31,6 @@
     width: 100%;
   }
 }
-
 
 :root {
   --blue: #007bff;

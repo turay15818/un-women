@@ -1,0 +1,79 @@
+<div class="container-fluid pb-5 font-roboto">
+    <div class="row px-xl-5">
+        <div class="col-lg-5 mb-30">
+            <div id="product-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner bg-light">
+                    <div class="carousel-item active">
+                        <img class="w-100 " style="height: 500px;"
+                            [src]="productDetails?.ProductImages[0]?.productImageOne" alt="Image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" style="height: 500px;"
+                            [src]="productDetails?.ProductImages[0]?.productImageTwo" alt="Image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" style="height: 500px;"
+                            [src]="productDetails?.ProductImages[0]?.productImageThree" alt="Image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" style="height: 500px;"
+                            [src]="productDetails?.ProductImages[0]?.productImageThree" alt="Image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" style="height: 500px;"
+                            [src]="productDetails?.ProductImages[0]?.productImageThree" alt="Image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" style="height: 500px;"
+                            [src]="productDetails?.ProductImages[0]?.productImageFour" alt="Image" />
+
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#product-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#product-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-7 h-auto mb-30">
+            <div class="h-100 bg-light p-30">
+                <h3>Product Name: <span class="text-info fw-bold">{{ productDetails?.productName }}</span> </h3>
+
+                <div class="d-flex mb-3">
+                    <div class="text-primary mr-2">
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star-half-alt"></small>
+                        <small class="far fa-star"></small>
+                    </div>
+                    <small class="pt-1">({{ productDetails?.rating }} Reviews)</small>
+                </div>
+                <h3 class="font-weight-semi-bold mb-4">
+                    LE {{ productDetails?.currentPrice }}
+                </h3>
+
+                <!-- TODO Some Details  -->
+
+                <div class="row px-xl-5">
+                    <div class="col">
+                        <div class="bg-light p-30 shadow-lg m-4 p-4 rounded">
+                            <div class="nav nav-tabs mb-4">
+                                <a class="nav-item nav-link text-dark active" data-toggle="tab">Description</a>
+
+                            </div>
+                            <p class="mb-4">{{ productDetails?.discription }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

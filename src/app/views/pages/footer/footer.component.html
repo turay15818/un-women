@@ -1,0 +1,105 @@
+<footer class="text-white text-center text-lg-start bg-info shadow-lg mt-4 font-roboto">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row mt-4">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">About UN Women</h5>
+
+                <p>
+                    UN Women is the UN organization delivering programmes, policies and standards that uphold women’s
+                    human rights and ensure that every woman and girl lives up to her full potential.
+                </p>
+
+                <h1 class="font-roboto fw-bold">
+                    We are the global champion for <span class="fw-bold text-warning">gender equality.</span>
+                </h1>
+
+                <div class="mt-4">
+                    <!-- Facebook -->
+                    <a type="button" class="btn btn-floating btn-info btn-lg"><i class="fab fa-facebook-f"></i></a>
+                    <!-- Dribbble -->
+                    <a type="button" class="btn btn-floating btn-info btn-lg"><i class="fab fa-dribbble"></i></a>
+                    <!-- Twitter -->
+                    <a type="button" class="btn btn-floating btn-info btn-lg"><i class="fab fa-twitter"></i></a>
+                    <!-- Google + -->
+                    <a type="button" class="btn btn-floating btn-info btn-lg"><i class="fab fa-google-plus-g"></i></a>
+                    <!-- Linkedin -->
+                </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-1 mb-md-0 shadow-lg">
+                <h5 class="text-uppercase mb-1 pb-1 mt-4">Subscribe For Our Latest Product</h5>
+                <div *ngIf="subscriptionSuccessful" class="text-success">
+                    Thank you for subscribing to our newsletter!
+                </div>
+                <form (ngSubmit)="subscribeToNewsletter()" #newsletterForm="ngForm">
+                    <div class="form-outline form-white mb-1">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="example@gmail.com" name="email" [(ngModel)]="email"
+                            class="form-control form-control-lg shadow-lg" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning">Subscribe</button>
+                    </div>
+
+                </form>
+
+                <ul class="fa-ul" style="margin-left: 1.65em;">
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Freetown Sierra
+                            Leone</span>
+                    </li>
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-envelope"></i></span><span
+                            class="ms-2">info@unwomenmarketsquare.org</span>
+                    </li>
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 232 79 366
+                            751</span>
+                    </li>
+                    <li class="mb-3">
+                        <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 232 78 187
+                            861</span>
+                    </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0 shadow-lg">
+                <h5 class="text-uppercase mb-4 mt-4">Opening hours</h5>
+
+                <table class="table text-center text-white">
+                    <tbody class="font-weight-normal">
+                        <tr>
+                            <td>Mon - Thu:</td>
+                            <td>8am - 9pm</td>
+                        </tr>
+                        <tr>
+                            <td>Fri - Sat:</td>
+                            <td>8am - 1am</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday:</td>
+                            <td>9am - 10pm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="https://unwomenmarketsquare.org/">UN Women Market Square</a>
+    </div>
+    <!-- Copyright -->
+</footer>

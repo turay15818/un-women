@@ -1,33 +1,17 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg fixed-top">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-lg fixed-top font-roboto">
   <div class="container-fluid pl-4">
     <a class="navbar-brand navbarbrand" href="#">
-      <img
-        src="../../../../assets/img/brand/un-women-logo.png"
-        alt="UN WOMEN Logo"
-        style="width: 120px"
-        class="logo-image"
-      />
+      <img src="../../../../assets/img/brand/un-women-logo.png" alt="UN WOMEN Logo" style="width: 120px"
+        class="logo-image" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="d-flex ml-auto" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
       <ul class="navbar-nav ml-auto">
@@ -35,19 +19,35 @@
           <a class="nav-link" [routerLink]="['/home']">Home</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/about']">About</a>
+          <a class="nav-link" [routerLink]="['/about']">Who we are</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/business']">Business</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/mentor']">Mentor</a>
+          <a class="nav-link" [routerLink]="['/mentors']">Mentor</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/blog']">Blog</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="userData && userData.role === 'Mentor'">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="userData && userData.role === 'Vendor'">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="userData && userData.role === 'Customer'">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="userData && userData.role === 'Admin'">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="userData && userData.role === 'SuperAdmin'">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
         </li>
       </ul>
     </div>

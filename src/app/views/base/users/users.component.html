@@ -1,0 +1,32 @@
+<table class="table align-middle mb-0 bg-white shadow-lg responsive table-hover table-bordered">
+    <thead class="bg-light">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Home Address</th>
+            <th>Role</th>
+            <th>Profile Picture</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of usersData; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNo }}</td>
+            <td>{{ user.homeAddress }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                <img [src]="user.url" alt="Profile" style="width: 45px; height: 45px" class="rounded-circle">
+            </td>
+            <td>
+                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                    Edit
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

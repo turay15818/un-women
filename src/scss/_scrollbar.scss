@@ -34,3 +34,11 @@
 .dark-theme::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+body,
+.navbar,
+.btn,
+.form-control,
+.table,
+.alert {
+  font-family: 'Roboto', sans-serif;
+}

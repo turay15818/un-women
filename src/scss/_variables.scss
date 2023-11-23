@@ -1,6 +1,13 @@
 // Variable overrides
 $enable-deprecation-messages: false;
-
+body,
+.navbar,
+.btn,
+.form-control,
+.table,
+.alert {
+  font-family: 'Roboto', sans-serif;
+}
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for

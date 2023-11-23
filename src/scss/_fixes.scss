@@ -10,3 +10,11 @@
 
 // temp fix .chartjs-tooltip-body-item padding
 @import "charts";
+body,
+.navbar,
+.btn,
+.form-control,
+.table,
+.alert {
+  font-family: 'Roboto', sans-serif;
+}
